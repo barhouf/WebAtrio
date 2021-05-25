@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Un formulaire de connexion en AJAX</title>
+</head>
+
+<body>
+
+    <h1>Un formulaire de connexion en AJAX</h1>
+
+    <form>
+    <p>
+        Prénom : <input type="text" id="firstname" />
+        Nom : <input type="text" id="lastname" />
+        Date de naissance : <input type="text" id="dob" />
+        Age : <input type="text" id="age" />
+        <input type="submit" id="submit" value="send" />
+    </p>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var firstname = $("#firstname").val();
+            var lastname = $("#lastname").val();
+            var dob = $("#dob").val();
+            var age = $("#age").val();
+            $($enter).click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: ".....rest service url....",
+                    dataType: JSON,
+                    data: {
+                        "firstname": firstname,
+                        "lastname": lastname,
+                        "dob": dob,
+                        "age": age
+                    },
+                    success: function (data) {
+                        alert("success");
+                    }
+                    error: function (e) {
+                        alert("error" + e)
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
